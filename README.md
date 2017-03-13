@@ -1,2 +1,2 @@
 # Memoize
-This repo contains methods for memoization
+This repo contains methods for memoization.
