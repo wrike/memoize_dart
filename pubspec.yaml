@@ -1,0 +1,11 @@
+name: memoize
+version: 1.0.0
+
+environment:
+  sdk: '>=1.21.1 <2.0.0'
+
+dependencies:
+  func: ^0.1.1
+
+dev_dependencies:
+  test: ^0.12.15+2
