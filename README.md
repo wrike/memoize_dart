@@ -15,7 +15,7 @@ void main() {
   var rect1 = new Rectangle<int>(0, 0, 10, 10);
   var rect2 = new Rectangle<int>(0, 0, 10, 10);
   
-  var func = memo1<Rectangle<int>, int>((Rectangle<int> a) => a.width * a.height);
+  var func = memo1((Rectangle<int> a) => a.width * a.height);
 
    print(func(rect1));
    print(func(rect2)); // cached result is returned
@@ -32,7 +32,7 @@ void main() {
   var rect1 = new Rectangle<int>(0, 0, 10, 10);
   var rect2 = new Rectangle<int>(0, 0, 10, 10);
   
-  var func = memo1<Rectangle<int>, int>((Rectangle<int> a) => a.width * a.height);
+  var func = imemo1((Rectangle<int> a) => a.width * a.height);
 
    print(func(rect1));
    print(func(rect1)); // cached - same object instance
