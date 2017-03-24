@@ -1,5 +1,6 @@
 name: memoize
 version: 1.1.0
+description: Returns cached result of function call when inputs were not changed from previous invocation.
 
 authors:
 - Alexander Polyankin <alexander.polyankin@team.wrike.com>

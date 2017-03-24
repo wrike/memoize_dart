@@ -1,6 +1,6 @@
 import 'package:func/func.dart';
 
-/// Checks argument for equality with [==] operator and returns cached result of unary [func] if argument was not changed.
+/// Checks 1 argument for equality with [==] operator and returns cached result if it was not changed.
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
   A prevArg;
   R prevResult;
@@ -19,7 +19,7 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
   });
 }
 
-/// Checks arguments for equality with [==] operator and returns cached result of binary [func] if arguments were not changed.
+/// Checks 2 arguments for equality with [==] operator and returns cached result if they were not changed.
 Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
   A prevArg1;
   B prevArg2;
@@ -40,7 +40,7 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
   });
 }
 
-/// Checks arguments for equality with [==] operator and returns cached result of ternary [func] if arguments were not changed.
+/// Checks 3 arguments for equality with [==] operator and returns cached result if they were not changed.
 Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
   A prevArg1;
   B prevArg2;
@@ -63,7 +63,7 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
   });
 }
 
-/// Checks argument for equality with [identical] call and returns cached result of unary [func] if argument was not changed.
+/// Checks 1 argument for equality with [identical] call and returns cached result if it was not changed.
 Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
   A prevArg;
   R prevResult;
@@ -82,7 +82,7 @@ Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
   });
 }
 
-/// Checks arguments for equality with [identical] call and returns cached result of binary [func] if arguments were not changed.
+/// Checks 2 arguments for equality with [identical] call and returns cached result if they were not changed.
 Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
   A prevArg1;
   B prevArg2;
@@ -103,7 +103,7 @@ Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
   });
 }
 
-/// Checks arguments for equality with [identical] call and returns cached result of ternary [func] if arguments were not changed.
+/// Checks 3 arguments for equality with [identical] call and returns cached result if they were not changed.
 Func3<A, B, C, R> imemo3<A, B, C, R>(Func3<A, B, C, R> func) {
   A prevArg1;
   B prevArg2;
