@@ -1,5 +1,5 @@
 name: memoize
-version: 1.1.0
+version: 1.2.0
 description: Returns cached result of function call when inputs were not changed from previous invocation.
 
 authors:
@@ -9,7 +9,7 @@ authors:
 homepage: https://github.com/wrike/memoize_dart
 
 environment:
-  sdk: '>=1.21.1 <2.0.0'
+  sdk: '>=1.21.0 <2.0.0'
 
 dependencies:
   func: ^0.1.1
