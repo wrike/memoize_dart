@@ -39,3 +39,7 @@ void main() {
   print(func(rect2)); // not cached - different object instance
 }
 ```
+
+## Contributors
+
+  - [Brian Egan](https://gitlab.com/users/brianegan/projects)
