@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.0
+- Add 5-10 arguments implementation
+
 ## 1.2.0
 - Add 4 arguments implementation
 

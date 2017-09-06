@@ -4,7 +4,7 @@
 
 ## Examples
 
-`memo1`, `memo2`, `memo3`, `memo4` compare arguments with `==` operator:
+`memo1`, `memo2`, ... `memo10` compare arguments with `==` operator:
 
 
 ```dart
@@ -22,7 +22,7 @@ void main() {
 }
 ```
 
-`imemo1`, `imemo2`, `imemo3`, `imemo4` compare arguments with `identical` function:
+`imemo1`, `imemo2`, ... `imemo10` compare arguments with `identical` function:
 
 ```dart
 import 'dart:math';
@@ -39,3 +39,7 @@ void main() {
   print(func(rect2)); // not cached - different object instance
 }
 ```
+
+## Contributors
+
+  - [Brian Egan](https://gitlab.com/users/brianegan/projects)
