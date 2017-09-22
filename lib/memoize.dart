@@ -1,8 +1,6 @@
-import 'package:func/func.dart';
-
 /// Checks 1 argument for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func1<A, R> memo1<A, R>(Func1<A, R> func) {
+R Function(A) memo1<A, R>(R Function(A) func) {
   A prevArg;
   R prevResult;
   bool isInitial = true;
@@ -22,7 +20,7 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
 
 /// Checks 2 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
-Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
+R Function(A, B) memo2<A, B, R>(R Function(A, B) func) {
   A prevArgA;
   B prevArgB;
   R prevResult;
@@ -44,7 +42,7 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
 
 /// Checks 3 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
-Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
+R Function(A, B, C) memo3<A, B, C, R>(R Function(A, B, C) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -71,7 +69,7 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
 
 /// Checks 4 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
-Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
+R Function(A, B, C, D) memo4<A, B, C, D, R>(R Function(A, B, C, D) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -101,7 +99,7 @@ Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 
 /// Checks 5 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
+R Function(A, B, C, D, E) memo5<A, B, C, D, E, R>(R Function(A, B, C, D, E) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -134,8 +132,8 @@ Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
 
 /// Checks 6 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
-    Func6<A, B, C, D, E, F, R> func) {
+R Function(A, B, C, D, E, F) memo6<A, B, C, D, E, F, R>(
+    R Function(A, B, C, D, E, F) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -171,8 +169,8 @@ Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
 
 /// Checks 7 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
-    Func7<A, B, C, D, E, F, G, R> func) {
+R Function(A, B, C, D, E, F, G) memo7<A, B, C, D, E, F, G, R>(
+    R Function(A, B, C, D, E, F, G) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -211,8 +209,8 @@ Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
 
 /// Checks 8 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
-    Func8<A, B, C, D, E, F, G, H, R> func) {
+R Function(A, B, C, D, E, F, G, H) memo8<A, B, C, D, E, F, G, H, R>(
+    R Function(A, B, C, D, E, F, G, H) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -254,8 +252,8 @@ Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
 
 /// Checks 9 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
-Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
-    Func9<A, B, C, D, E, F, G, H, I, R> func) {
+R Function(A, B, C, D, E, F, G, H, I) memo9<A, B, C, D, E, F, G, H, I, R>(
+    R Function(A, B, C, D, E, F, G, H, I) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -301,8 +299,8 @@ Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
 
 /// Checks 10 arguments for equality with [==] operator and returns cached
 /// result if it was not changed.
-Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
-    Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
+R Function(A, B, C, D, E, F, G, H, I, J) memo10<A, B, C, D, E, F, G, H, I, J, R>(
+    R Function(A, B, C, D, E, F, G, H, I, J) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -352,7 +350,7 @@ Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
 
 /// Checks 1 argument for equality with [identical] call and returns the cached
 /// result if it was not changed.
-Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
+R Function(A) imemo1<A, R>(R Function(A) func) {
   A prevArg;
   R prevResult;
   bool isInitial = true;
@@ -372,7 +370,7 @@ Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
 
 /// Checks 2 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
-Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
+R Function(A, B) imemo2<A, B, R>(R Function(A, B) func) {
   A prevArgA;
   B prevArgB;
   R prevResult;
@@ -394,7 +392,7 @@ Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
 
 /// Checks 3 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
-Func3<A, B, C, R> imemo3<A, B, C, R>(Func3<A, B, C, R> func) {
+R Function(A, B, C) imemo3<A, B, C, R>(R Function(A, B, C) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -421,7 +419,7 @@ Func3<A, B, C, R> imemo3<A, B, C, R>(Func3<A, B, C, R> func) {
 
 /// Checks 4 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
-Func4<A, B, C, D, R> imemo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
+R Function(A, B, C, D) imemo4<A, B, C, D, R>(R Function(A, B, C, D) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -451,7 +449,7 @@ Func4<A, B, C, D, R> imemo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 
 /// Checks 5 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func5<A, B, C, D, E, R> imemo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
+R Function(A, B, C, D, E) imemo5<A, B, C, D, E, R>(R Function(A, B, C, D, E) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -484,8 +482,8 @@ Func5<A, B, C, D, E, R> imemo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
 
 /// Checks 6 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func6<A, B, C, D, E, F, R> imemo6<A, B, C, D, E, F, R>(
-    Func6<A, B, C, D, E, F, R> func) {
+R Function(A, B, C, D, E, F) imemo6<A, B, C, D, E, F, R>(
+    R Function(A, B, C, D, E, F) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -521,8 +519,8 @@ Func6<A, B, C, D, E, F, R> imemo6<A, B, C, D, E, F, R>(
 
 /// Checks 7 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func7<A, B, C, D, E, F, G, R> imemo7<A, B, C, D, E, F, G, R>(
-    Func7<A, B, C, D, E, F, G, R> func) {
+R Function(A, B, C, D, E, F, G) imemo7<A, B, C, D, E, F, G, R>(
+    R Function(A, B, C, D, E, F, G) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -561,8 +559,8 @@ Func7<A, B, C, D, E, F, G, R> imemo7<A, B, C, D, E, F, G, R>(
 
 /// Checks 8 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func8<A, B, C, D, E, F, G, H, R> imemo8<A, B, C, D, E, F, G, H, R>(
-    Func8<A, B, C, D, E, F, G, H, R> func) {
+R Function(A, B, C, D, E, F, G, H) imemo8<A, B, C, D, E, F, G, H, R>(
+    R Function(A, B, C, D, E, F, G, H) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -604,8 +602,8 @@ Func8<A, B, C, D, E, F, G, H, R> imemo8<A, B, C, D, E, F, G, H, R>(
 
 /// Checks 9 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func9<A, B, C, D, E, F, G, H, I, R> imemo9<A, B, C, D, E, F, G, H, I, R>(
-    Func9<A, B, C, D, E, F, G, H, I, R> func) {
+R Function(A, B, C, D, E, F, G, H, I) imemo9<A, B, C, D, E, F, G, H, I, R>(
+    R Function(A, B, C, D, E, F, G, H, I) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
@@ -651,9 +649,9 @@ Func9<A, B, C, D, E, F, G, H, I, R> imemo9<A, B, C, D, E, F, G, H, I, R>(
 
 /// Checks 10 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
-Func10<A, B, C, D, E, F, G, H, I, J, R>
+R Function(A, B, C, D, E, F, G, H, I, J)
     imemo10<A, B, C, D, E, F, G, H, I, J, R>(
-        Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
+        R Function(A, B, C, D, E, F, G, H, I, J) func) {
   A prevArgA;
   B prevArgB;
   C prevArgC;
