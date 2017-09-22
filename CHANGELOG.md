@@ -1,7 +1,7 @@
 # Changelog
 
-## 1.4.0
-- Remove dependency on func package
+## 2.0.0
+- Use new function syntax
 
 ## 1.3.0
 - Add 5-10 arguments implementation
