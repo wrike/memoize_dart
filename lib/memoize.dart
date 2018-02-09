@@ -1,5 +1,22 @@
 import 'package:func/func.dart';
 
+// Lazy evaluates function and returns cached result on each call.
+Func0<R> memo0<R>(Func0<R> func) {
+  R prevResult;
+  bool isInitial = true;
+
+  return (() {
+    if (!isInitial) {
+      return prevResult;
+    } else {
+      prevResult = func();
+      isInitial = false;
+
+      return prevResult;
+    }
+  });
+}
+
 /// Checks 1 argument for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
