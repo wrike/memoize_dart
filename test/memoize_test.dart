@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('memo0', () {
-    test('should cache result on 1 call', () {
+    test('should cache result on first call', () {
       var count = 0;
       var func = memo0(() => ++count);
 
