@@ -40,6 +40,20 @@ void main() {
 }
 ```
 
+`memo0` caches result on first call and can be used as lazy cache:
+
+```dart
+import 'dart:math';
+import 'package:memoize/memoize.dart';
+
+void main() {
+  var func = memo0(() => new Rectangle<int>(0, 0, 10, 10));
+  
+  print(func());
+  print(func()); // cached - same object instance
+}
+```
+
 ## Contributors
 
   - [Brian Egan](https://gitlab.com/users/brianegan/projects)

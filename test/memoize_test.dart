@@ -4,6 +4,17 @@ import 'package:memoize/memoize.dart';
 import 'package:test/test.dart';
 
 void main() {
+  group('memo0', () {
+    test('should cache result on first call', () {
+      var count = 0;
+      var func = memo0(() => ++count);
+
+      expect(count, 0);
+      expect(func(), 1);
+      expect(func(), 1);
+    });
+  });
+
   group('memo1', () {
     test('should cache result for 1 argument', () {
       var count = 0;
