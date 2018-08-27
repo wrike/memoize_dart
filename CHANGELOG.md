@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.0
+- Bump dependencies to support dart2, drop "func" dependency
+
 ## 1.4.0
 - Add 0 argument implementation
 
