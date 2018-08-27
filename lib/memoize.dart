@@ -1,6 +1,6 @@
-import 'package:func/func.dart';
+import 'function_defs.dart';
 
-// Lazy evaluates function and returns cached result on each call.
+/// Lazy evaluates function and returns cached result on each call.
 Func0<R> memo0<R>(Func0<R> func) {
   R prevResult;
   bool isInitial = true;

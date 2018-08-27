@@ -8,6 +8,7 @@
 .packages
 .pub/
 build/
+.dart_tool
 
 # Older SDK versions
 # (Include if the minimum SDK version specified in pubsepc.yaml is earlier than 1.20)
