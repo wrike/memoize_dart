@@ -1,0 +1,9 @@
+name: example
+description: Example showcase of memoize library
+
+environment:
+  sdk: '>=2.0.0-dev <3.0.0'
+
+dependencies:
+  memoize:
+    path: ../
