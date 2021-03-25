@@ -3,7 +3,8 @@
 `memoize` returns cached result of function call when inputs were not changed from previous invocation.
 
 ## Warning
-memoize_dart now supports dart2 since `2.0.0` version.
+
+memoize_dart now supports dart 2.12.0 and null safety since `3.0.0` version.
 
 For `2.0.0` we drop `func` as dependency. Because it archived and doesn't support dart2.
 
