@@ -18,7 +18,7 @@ void main() {
   group('memo1', () {
     test('should cache result for 1 argument', () {
       var count = 0;
-      var func = memo1((int a) => ++count);
+      var func = memo1((int? a) => ++count);
 
       expect(count, 0);
       expect(func(null), 1);
@@ -60,7 +60,7 @@ void main() {
   group('imemo1', () {
     test('should cache result for 1 argument', () {
       var count = 0;
-      var func = imemo1((int a) => ++count);
+      var func = imemo1((int? a) => ++count);
 
       expect(count, 0);
       expect(func(null), 1);
@@ -102,7 +102,7 @@ void main() {
   group('memo2', () {
     test('should cache result for 2 arguments', () {
       var count = 0;
-      var func = memo2((int a, int b) => ++count);
+      var func = memo2((int? a, int? b) => ++count);
 
       expect(count, 0);
       expect(func(null, null), 1);
@@ -127,7 +127,7 @@ void main() {
 
     test('should check arguments by value', () {
       var count = 0;
-      var func = memo2((Rectangle<int> a, Rectangle<int> b) => ++count);
+      var func = memo2((Rectangle<int>? a, Rectangle<int>? b) => ++count);
 
       var rect1 = new Rectangle<int>(0, 0, 10, 20);
       var rect2 = new Rectangle<int>(0, 0, 10, 20);
@@ -148,7 +148,7 @@ void main() {
   group('imemo2', () {
     test('should cache result for 2 arguments', () {
       var count = 0;
-      var func = imemo2((int a, int b) => ++count);
+      var func = imemo2((int? a, int? b) => ++count);
 
       expect(count, 0);
       expect(func(null, null), 1);
@@ -173,7 +173,7 @@ void main() {
 
     test('should check arguments by reference', () {
       var count = 0;
-      var func = imemo2((Rectangle<int> a, Rectangle<int> b) => ++count);
+      var func = imemo2((Rectangle<int>? a, Rectangle<int>? b) => ++count);
 
       var rect1 = new Rectangle<int>(0, 0, 10, 20);
       var rect2 = new Rectangle<int>(0, 0, 10, 20);
@@ -194,7 +194,7 @@ void main() {
   group('memo3', () {
     test('should cache result for 3 arguments', () {
       var count = 0;
-      var func = memo3((int a, int b, int c) => ++count);
+      var func = memo3((int? a, int? b, int? c) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null), 1);
@@ -218,7 +218,7 @@ void main() {
     test('should check arguments by reference', () {
       var count = 0;
       var func = memo3(
-          (Rectangle<int> a, Rectangle<int> b, Rectangle<int> c) => ++count);
+          (Rectangle<int>? a, Rectangle<int>? b, Rectangle<int>? c) => ++count);
 
       var rect1 = new Rectangle<int>(0, 0, 10, 20);
       var rect2 = new Rectangle<int>(0, 0, 10, 20);
@@ -239,7 +239,7 @@ void main() {
   group('imemo3', () {
     test('should cache result for 3 arguments', () {
       var count = 0;
-      var func = imemo3((int a, int b, int c) => ++count);
+      var func = imemo3((int? a, int? b, int? c) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null), 1);
@@ -263,7 +263,7 @@ void main() {
     test('should check arguments by reference', () {
       var count = 0;
       var func = imemo3(
-          (Rectangle<int> a, Rectangle<int> b, Rectangle<int> c) => ++count);
+          (Rectangle<int>? a, Rectangle<int>? b, Rectangle<int>? c) => ++count);
 
       var rect1 = new Rectangle<int>(0, 0, 10, 20);
       var rect2 = new Rectangle<int>(0, 0, 10, 20);
@@ -284,7 +284,7 @@ void main() {
   group('memo4', () {
     test('should cache result for 4 arguments', () {
       var count = 0;
-      var func = memo4((int a, int b, int c, int d) => ++count);
+      var func = memo4((int? a, int? b, int? c, int? d) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null), 1);
@@ -334,7 +334,7 @@ void main() {
   group('imemo4', () {
     test('should cache result for 4 arguments', () {
       var count = 0;
-      var func = imemo4((int a, int b, int c, int d) => ++count);
+      var func = imemo4((int? a, int? b, int? c, int? d) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null), 1);
@@ -384,7 +384,7 @@ void main() {
   group('memo5', () {
     test('should cache result for 5 arguments', () {
       var count = 0;
-      var func = memo5((int a, int b, int c, int d, int e) => ++count);
+      var func = memo5((int? a, int? b, int? c, int? d, int? e) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null), 1);
@@ -437,7 +437,7 @@ void main() {
   group('imemo5', () {
     test('should cache result for 5 arguments', () {
       var count = 0;
-      var func = imemo5((int a, int b, int c, int d, int e) => ++count);
+      var func = imemo5((int? a, int? b, int? c, int? d, int? e) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null), 1);
@@ -490,7 +490,7 @@ void main() {
   group('memo6', () {
     test('should cache result for 6 arguments', () {
       var count = 0;
-      var func = memo6((int a, int b, int c, int d, int e, int f) => ++count);
+      var func = memo6((int? a, int? b, int? c, int? d, int? e, int? f) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null), 1);
@@ -547,7 +547,7 @@ void main() {
   group('imemo6', () {
     test('should cache result for 6 arguments', () {
       var count = 0;
-      var func = imemo6((int a, int b, int c, int d, int e, int f) => ++count);
+      var func = imemo6((int? a, int? b, int? c, int? d, int? e, int? f) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null), 1);
@@ -607,7 +607,7 @@ void main() {
     test('should cache result for 7 arguments', () {
       var count = 0;
       var func =
-          memo7((int a, int b, int c, int d, int e, int f, int g) => ++count);
+          memo7((int? a, int? b, int? c, int? d, int? e, int? f, int? g) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null), 1);
@@ -672,7 +672,7 @@ void main() {
     test('should cache result for 7 arguments', () {
       var count = 0;
       var func =
-          imemo7((int a, int b, int c, int d, int e, int f, int g) => ++count);
+          imemo7((int? a, int? b, int? c, int? d, int? e, int? f, int? g) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null), 1);
@@ -738,7 +738,7 @@ void main() {
     test('should cache result for 8 arguments', () {
       var count = 0;
       var func =
-          memo8((int a, int b, int c, int d, int e, int f, int g, int h) => ++count);
+          memo8((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null), 1);
@@ -807,7 +807,7 @@ void main() {
     test('should cache result for 8 arguments', () {
       var count = 0;
       var func =
-      imemo8((int a, int b, int c, int d, int e, int f, int g, int h) => ++count);
+      imemo8((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null), 1);
@@ -876,7 +876,7 @@ void main() {
     test('should cache result for 9 arguments', () {
       var count = 0;
       var func =
-      memo9((int a, int b, int c, int d, int e, int f, int g, int h, int i) => ++count);
+      memo9((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h, int? i) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null, null), 1);
@@ -949,7 +949,7 @@ void main() {
     test('should cache result for 9 arguments', () {
       var count = 0;
       var func =
-      imemo9((int a, int b, int c, int d, int e, int f, int g, int h, int i) => ++count);
+      imemo9((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h, int? i) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null, null), 1);
@@ -1023,7 +1023,7 @@ void main() {
     test('should cache result for 10 arguments', () {
       var count = 0;
       var func =
-      memo10((int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) => ++count);
+      memo10((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h, int? i, int? j) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null, null, null), 1);
@@ -1100,7 +1100,7 @@ void main() {
     test('should cache result for 10 arguments', () {
       var count = 0;
       var func =
-      imemo10((int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) => ++count);
+      imemo10((int? a, int? b, int? c, int? d, int? e, int? f, int? g, int? h, int? i, int? j) => ++count);
 
       expect(count, 0);
       expect(func(null, null, null, null, null, null, null, null, null, null), 1);

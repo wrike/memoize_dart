@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.0
+- Migrate to null-safety
+
 ## 2.0.0
 - Bump dependencies to support dart2, drop "func" dependency
 
