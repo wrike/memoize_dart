@@ -663,8 +663,8 @@ void main() {
       expect(func(rect1, rect2, rect3, rect4, rect5, rect6, rect7), 1);
       expect(func(rect1, rect2, rect3, rect4, rect4, rect6, rect8), 2);
       expect(func(rect1, rect2, rect3, rect4, rect4, rect4, rect8), 2);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7), 3);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4), 3);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7), 1);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4), 1);
     });
   });
 
@@ -798,8 +798,8 @@ void main() {
       expect(func(rect1, rect1, rect3, rect4, rect5, rect1, rect7, rect8), 1);
       expect(func(rect1, rect2, rect2, rect4, rect4, rect6, rect8, rect9), 2);
       expect(func(rect1, rect2, rect3, rect1, rect4, rect4, rect4, rect9), 2);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1), 3);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1), 3);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1), 1);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1), 1);
     });
   });
 
@@ -940,8 +940,8 @@ void main() {
       expect(func(rect1, rect1, rect3, rect4, rect5, rect1, rect7, rect8, rect9), 1);
       expect(func(rect1, rect2, rect2, rect4, rect4, rect6, rect8, rect9, rect10), 2);
       expect(func(rect1, rect2, rect3, rect1, rect4, rect4, rect4, rect9, rect10), 2);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1, rect1), 3);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1, rect2), 3);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1, rect1), 1);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1, rect2), 1);
     });
   });
 
@@ -1091,8 +1091,8 @@ void main() {
       expect(func(rect1, rect1, rect3, rect4, rect5, rect1, rect7, rect8, rect9, rect10), 1);
       expect(func(rect1, rect2, rect2, rect4, rect4, rect6, rect8, rect9, rect10, rect11), 2);
       expect(func(rect1, rect2, rect3, rect1, rect4, rect4, rect4, rect9, rect10, rect11), 2);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1, rect1, rect10), 3);
-      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1, rect2, rect10), 3);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect7, rect1, rect1, rect10), 1);
+      expect(func(rect2, rect2, rect3, rect3, rect6, rect1, rect4, rect1, rect2, rect10), 1);
     });
   });
 
