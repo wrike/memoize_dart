@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'function_defs.dart';
 
 /// Lazy evaluates function and returns cached result on each call.
@@ -20,19 +22,14 @@ Func0<R> memo0<R>(Func0<R> func) {
 /// Checks 1 argument for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
-  late A prevArg;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<A, R>();
 
   return ((A arg) {
-    if (!isInitial && arg == prevArg) {
-      return prevResult;
+    if (argsToOutput.containsKey(arg)) {
+      return argsToOutput[arg]!;
     } else {
-      prevArg = arg;
-      prevResult = func(arg);
-      isInitial = false;
-
-      return prevResult;
+      argsToOutput[arg] = func(arg);
+      return argsToOutput[arg]!;
     }
   });
 }
