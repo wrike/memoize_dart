@@ -45,13 +45,13 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA) {
-    final cached = argsToOutput[[argA]];
+  return ((A aA) {
+    final cached = argsToOutput[[aA]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA);
-      argsToOutput[[argA]] = res;
+      final res = func(aA);
+      argsToOutput[[aA]] = res;
       return res;
     }
   });
@@ -65,13 +65,13 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB) {
-    final cached = argsToOutput[[argA, argB]];
+  return ((A aA, B aB) {
+    final cached = argsToOutput[[aA, aB]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB);
-      argsToOutput[[argA, argB]] = res;
+      final res = func(aA, aB);
+      argsToOutput[[aA, aB]] = res;
       return res;
     }
   });
@@ -85,13 +85,13 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC) {
-    final cached = argsToOutput[[argA, argB, argC]];
+  return ((A aA, B aB, C aC) {
+    final cached = argsToOutput[[aA, aB, aC]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC);
-      argsToOutput[[argA, argB, argC]] = res;
+      final res = func(aA, aB, aC);
+      argsToOutput[[aA, aB, aC]] = res;
       return res;
     }
   });
@@ -105,13 +105,13 @@ Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD) {
-    final cached = argsToOutput[[argA, argB, argC, argD]];
+  return ((A aA, B aB, C aC, D aD) {
+    final cached = argsToOutput[[aA, aB, aC, aD]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD);
-      argsToOutput[[argA, argB, argC, argD]] = res;
+      final res = func(aA, aB, aC, aD);
+      argsToOutput[[aA, aB, aC, aD]] = res;
       return res;
     }
   });
@@ -125,13 +125,13 @@ Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE]];
+  return ((A aA, B aB, C aC, D aD, E aE) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE);
-      argsToOutput[[argA, argB, argC, argD, argE]] = res;
+      final res = func(aA, aB, aC, aD, aE);
+      argsToOutput[[aA, aB, aC, aD, aE]] = res;
       return res;
     }
   });
@@ -146,13 +146,13 @@ Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF]];
+  return ((A aA, B aB, C aC, D aD, E aE, F aF) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE, aF]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE, argF);
-      argsToOutput[[argA, argB, argC, argD, argE, argF]] = res;
+      final res = func(aA, aB, aC, aD, aE, aF);
+      argsToOutput[[aA, aB, aC, aD, aE, aF]] = res;
       return res;
     }
   });
@@ -167,13 +167,13 @@ Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG]];
+  return ((A aA, B aB, C aC, D aD, E aE, F aF, G aG) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE, aF, aG]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE, argF, argG);
-      argsToOutput[[argA, argB, argC, argD, argE, argF, argG]] = res;
+      final res = func(aA, aB, aC, aD, aE, aF, aG);
+      argsToOutput[[aA, aB, aC, aD, aE, aF, aG]] = res;
       return res;
     }
   });
@@ -188,13 +188,13 @@ Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH]];
+  return ((A aA, B aB, C aC, D aD, E aE, F aF, G aG, H aH) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE, argF, argG, argH);
-      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH]] = res;
+      final res = func(aA, aB, aC, aD, aE, aF, aG, aH);
+      argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH]] = res;
       return res;
     }
   });
@@ -209,13 +209,13 @@ Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI]];
+  return ((A aA, B aB, C aC, D aD, E aE, F aF, G aG, H aH, I aI) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH, aI]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE, argF, argG, argH, argI);
-      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI]] = res;
+      final res = func(aA, aB, aC, aD, aE, aF, aG, aH, aI);
+      argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH, aI]] = res;
       return res;
     }
   });
@@ -230,13 +230,13 @@ Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
     hashCode: (l) => _listHashCode(l),
   );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI, J argJ) {
-    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ]];
+  return ((A aA, B aB, C aC, D aD, E aE, F aF, G aG, H aH, I aI, J aJ) {
+    final cached = argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH, aI, aJ]];
     if (cached != null) {
       return cached;
     } else {
-      final res = func(argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ);
-      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ]] = res;
+      final res = func(aA, aB, aC, aD, aE, aF, aG, aH, aI, aJ);
+      argsToOutput[[aA, aB, aC, aD, aE, aF, aG, aH, aI, aJ]] = res;
       return res;
     }
   });
