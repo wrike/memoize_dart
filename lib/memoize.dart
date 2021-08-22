@@ -36,7 +36,7 @@ Func0<R> memo0<R>(Func0<R> func) {
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (list) => list[0].hashCode,
+    hashCode: (l) => l[0].hashCode,
   );
 
   return ((A argA) {
@@ -56,7 +56,7 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
 Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (list) => list[0].hashCode ^ list[1].hashCode
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode
   );
 
   return ((A argA, B argB) {
@@ -74,26 +74,19 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
 /// Checks 3 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode
+  );
 
   return ((A argA, B argB, C argC) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevResult = func(argA, argB, argC);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC);
+      argsToOutput[[argA, argB, argC]] = res;
+      return res;
     }
   });
 }
@@ -101,29 +94,19 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
 /// Checks 4 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode
+  );
 
   return ((A argA, B argB, C argC, D argD) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC, argD]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevResult = func(argA, argB, argC, argD);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD);
+      argsToOutput[[argA, argB, argC, argD]] = res;
+      return res;
     }
   });
 }
@@ -131,32 +114,19 @@ Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 /// Checks 5 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode
+  );
 
   return ((A argA, B argB, C argC, D argD, E argE) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC, argD, argE]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevResult = func(argA, argB, argC, argD, argE);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE);
+      argsToOutput[[argA, argB, argC, argD, argE]] = res;
+      return res;
     }
   });
 }
@@ -165,35 +135,19 @@ Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
 /// result if it was not changed.
 Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
     Func6<A, B, C, D, E, F, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late F prevArgF;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode
+  );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE &&
-        argF == prevArgF) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevArgF = argF;
-      prevResult = func(argA, argB, argC, argD, argE, argF);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE, argF);
+      argsToOutput[[argA, argB, argC, argD, argE, argF]] = res;
+      return res;
     }
   });
 }
@@ -202,38 +156,19 @@ Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
 /// result if it was not changed.
 Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
     Func7<A, B, C, D, E, F, G, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late F prevArgF;
-  late G prevArgG;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode
+  );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE &&
-        argF == prevArgF &&
-        argG == prevArgG) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevArgF = argF;
-      prevArgG = argG;
-      prevResult = func(argA, argB, argC, argD, argE, argF, argG);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE, argF, argG);
+      argsToOutput[[argA, argB, argC, argD, argE, argF, argG]] = res;
+      return res;
     }
   });
 }
@@ -242,41 +177,19 @@ Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
 /// result if it was not changed.
 Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
     Func8<A, B, C, D, E, F, G, H, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late F prevArgF;
-  late G prevArgG;
-  late H prevArgH;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode
+  );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE &&
-        argF == prevArgF &&
-        argG == prevArgG &&
-        argH == prevArgH) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevArgF = argF;
-      prevArgG = argG;
-      prevArgH = argH;
-      prevResult = func(argA, argB, argC, argD, argE, argF, argG, argH);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE, argF, argG, argH);
+      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH]] = res;
+      return res;
     }
   });
 }
@@ -285,45 +198,19 @@ Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
 /// result if it was not changed.
 Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
     Func9<A, B, C, D, E, F, G, H, I, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late F prevArgF;
-  late G prevArgG;
-  late H prevArgH;
-  late I prevArgI;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode ^ l[8].hashCode
+  );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
-      I argI) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE &&
-        argF == prevArgF &&
-        argG == prevArgG &&
-        argH == prevArgH &&
-        argI == prevArgI) {
-      return prevResult;
+  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI) {
+    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevArgF = argF;
-      prevArgG = argG;
-      prevArgH = argH;
-      prevArgI = argI;
-      prevResult = func(argA, argB, argC, argD, argE, argF, argG, argH, argI);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE, argF, argG, argH, argI);
+      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI]] = res;
+      return res;
     }
   });
 }
@@ -332,49 +219,19 @@ Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
 /// result if it was not changed.
 Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
     Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late C prevArgC;
-  late D prevArgD;
-  late E prevArgE;
-  late F prevArgF;
-  late G prevArgG;
-  late H prevArgH;
-  late I prevArgI;
-  late J prevArgJ;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode ^ l[8].hashCode ^ l[9].hashCode
+  );
 
-  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
-      I argI, J argJ) {
-    if (!isInitial &&
-        argA == prevArgA &&
-        argB == prevArgB &&
-        argC == prevArgC &&
-        argD == prevArgD &&
-        argE == prevArgE &&
-        argF == prevArgF &&
-        argG == prevArgG &&
-        argH == prevArgH &&
-        argI == prevArgI &&
-        argJ == prevArgJ) {
-      return prevResult;
+  return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI, J argJ) {
+    final cached = argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevArgC = argC;
-      prevArgD = argD;
-      prevArgE = argE;
-      prevArgF = argF;
-      prevArgG = argG;
-      prevArgH = argH;
-      prevArgI = argI;
-      prevArgJ = argJ;
-      prevResult =
-          func(argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ);
+      argsToOutput[[argA, argB, argC, argD, argE, argF, argG, argH, argI, argJ]] = res;
+      return res;
     }
   });
 }
