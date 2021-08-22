@@ -2,6 +2,18 @@ import 'dart:collection';
 
 import 'function_defs.dart';
 
+// Stolen from flutter
+// https://api.flutter.dev/flutter/foundation/listEquals.html
+bool _listEquals<T>(List<T>? a, List<T>? b) {
+  if (a == null) return b == null;
+  if (b == null || a.length != b.length) return false;
+  if (identical(a, b)) return true;
+  for (int index = 0; index < a.length; index += 1) {
+    if (a[index] != b[index]) return false;
+  }
+  return true;
+}
+
 /// Lazy evaluates function and returns cached result on each call.
 Func0<R> memo0<R>(Func0<R> func) {
   late R prevResult;
@@ -22,14 +34,19 @@ Func0<R> memo0<R>(Func0<R> func) {
 /// Checks 1 argument for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
-  final argsToOutput = HashMap<A, R>();
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (list) => list[0].hashCode,
+  );
 
-  return ((A arg) {
-    if (argsToOutput.containsKey(arg)) {
-      return argsToOutput[arg]!;
+  return ((A argA) {
+    final cached = argsToOutput[[argA]];
+    if (cached != null) {
+      return cached;
     } else {
-      argsToOutput[arg] = func(arg);
-      return argsToOutput[arg]!;
+      final res = func(argA);
+      argsToOutput[[argA]] = res;
+      return res;
     }
   });
 }
@@ -37,21 +54,19 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
 /// Checks 2 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
-  late A prevArgA;
-  late B prevArgB;
-  late R prevResult;
-  bool isInitial = true;
+  final argsToOutput = HashMap<List, R>(
+    equals: (a, b) => _listEquals(a, b),
+    hashCode: (list) => list[0].hashCode ^ list[1].hashCode
+  );
 
   return ((A argA, B argB) {
-    if (!isInitial && argA == prevArgA && argB == prevArgB) {
-      return prevResult;
+    final cached = argsToOutput[[argA, argB]];
+    if (cached != null) {
+      return cached;
     } else {
-      prevArgA = argA;
-      prevArgB = argB;
-      prevResult = func(argA, argB);
-      isInitial = false;
-
-      return prevResult;
+      final res = func(argA, argB);
+      argsToOutput[[argA, argB]] = res;
+      return res;
     }
   });
 }
