@@ -1,10 +1,8 @@
-import 'dart:collection';
-
 import 'function_defs.dart';
 
 /// Lazy evaluates function and returns cached result on each call.
 Func0<R> memo0<R>(Func0<R> func) {
-  R prevResult;
+  late R prevResult;
   bool isInitial = true;
 
   return (() {
@@ -22,14 +20,19 @@ Func0<R> memo0<R>(Func0<R> func) {
 /// Checks 1 argument for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
-  HashMap<A, R> argsToOutput = HashMap();
+  late A prevArg;
+  late R prevResult;
+  bool isInitial = true;
 
   return ((A arg) {
-    if (argsToOutput.containsKey(arg)) {
-      return argsToOutput[arg];
+    if (!isInitial && arg == prevArg) {
+      return prevResult;
     } else {
-      argsToOutput[arg] = func(arg);
-      return argsToOutput[arg];
+      prevArg = arg;
+      prevResult = func(arg);
+      isInitial = false;
+
+      return prevResult;
     }
   });
 }
@@ -37,9 +40,9 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
 /// Checks 2 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
-  A prevArgA;
-  B prevArgB;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB) {
@@ -59,10 +62,10 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
 /// Checks 3 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC) {
@@ -86,11 +89,11 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
 /// Checks 4 arguments for equality with [==] operator and returns the cached
 /// result if they were not changed.
 Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD) {
@@ -116,12 +119,12 @@ Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 /// Checks 5 arguments for equality with [==] operator and returns the cached
 /// result if it was not changed.
 Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE) {
@@ -150,13 +153,13 @@ Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
 /// result if it was not changed.
 Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
     Func6<A, B, C, D, E, F, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF) {
@@ -187,14 +190,14 @@ Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
 /// result if it was not changed.
 Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
     Func7<A, B, C, D, E, F, G, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG) {
@@ -227,15 +230,15 @@ Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
 /// result if it was not changed.
 Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
     Func8<A, B, C, D, E, F, G, H, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH) {
@@ -270,16 +273,16 @@ Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
 /// result if it was not changed.
 Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
     Func9<A, B, C, D, E, F, G, H, I, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  I prevArgI;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late I prevArgI;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
@@ -317,17 +320,17 @@ Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
 /// result if it was not changed.
 Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
     Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  I prevArgI;
-  J prevArgJ;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late I prevArgI;
+  late J prevArgJ;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
@@ -367,8 +370,8 @@ Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
 /// Checks 1 argument for equality with [identical] call and returns the cached
 /// result if it was not changed.
 Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
-  A prevArg;
-  R prevResult;
+  late A prevArg;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A arg) {
@@ -387,9 +390,9 @@ Func1<A, R> imemo1<A, R>(Func1<A, R> func) {
 /// Checks 2 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
 Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
-  A prevArgA;
-  B prevArgB;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB) {
@@ -409,10 +412,10 @@ Func2<A, B, R> imemo2<A, B, R>(Func2<A, B, R> func) {
 /// Checks 3 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
 Func3<A, B, C, R> imemo3<A, B, C, R>(Func3<A, B, C, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC) {
@@ -436,11 +439,11 @@ Func3<A, B, C, R> imemo3<A, B, C, R>(Func3<A, B, C, R> func) {
 /// Checks 4 arguments for equality with [identical] call and returns the cached
 /// result if they were not changed.
 Func4<A, B, C, D, R> imemo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD) {
@@ -466,12 +469,12 @@ Func4<A, B, C, D, R> imemo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 /// Checks 5 arguments for equality with [identical] call and returns cached
 /// result if they were not changed.
 Func5<A, B, C, D, E, R> imemo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE) {
@@ -500,13 +503,13 @@ Func5<A, B, C, D, E, R> imemo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
 /// result if they were not changed.
 Func6<A, B, C, D, E, F, R> imemo6<A, B, C, D, E, F, R>(
     Func6<A, B, C, D, E, F, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF) {
@@ -537,14 +540,14 @@ Func6<A, B, C, D, E, F, R> imemo6<A, B, C, D, E, F, R>(
 /// result if they were not changed.
 Func7<A, B, C, D, E, F, G, R> imemo7<A, B, C, D, E, F, G, R>(
     Func7<A, B, C, D, E, F, G, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG) {
@@ -577,15 +580,15 @@ Func7<A, B, C, D, E, F, G, R> imemo7<A, B, C, D, E, F, G, R>(
 /// result if they were not changed.
 Func8<A, B, C, D, E, F, G, H, R> imemo8<A, B, C, D, E, F, G, H, R>(
     Func8<A, B, C, D, E, F, G, H, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH) {
@@ -620,16 +623,16 @@ Func8<A, B, C, D, E, F, G, H, R> imemo8<A, B, C, D, E, F, G, H, R>(
 /// result if they were not changed.
 Func9<A, B, C, D, E, F, G, H, I, R> imemo9<A, B, C, D, E, F, G, H, I, R>(
     Func9<A, B, C, D, E, F, G, H, I, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  I prevArgI;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late I prevArgI;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
@@ -668,17 +671,17 @@ Func9<A, B, C, D, E, F, G, H, I, R> imemo9<A, B, C, D, E, F, G, H, I, R>(
 Func10<A, B, C, D, E, F, G, H, I, J, R>
     imemo10<A, B, C, D, E, F, G, H, I, J, R>(
         Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
-  A prevArgA;
-  B prevArgB;
-  C prevArgC;
-  D prevArgD;
-  E prevArgE;
-  F prevArgF;
-  G prevArgG;
-  H prevArgH;
-  I prevArgI;
-  J prevArgJ;
-  R prevResult;
+  late A prevArgA;
+  late B prevArgB;
+  late C prevArgC;
+  late D prevArgD;
+  late E prevArgE;
+  late F prevArgF;
+  late G prevArgG;
+  late H prevArgH;
+  late I prevArgI;
+  late J prevArgJ;
+  late R prevResult;
   bool isInitial = true;
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH,
