@@ -14,6 +14,12 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
   return true;
 }
 
+int _listHashCode(List list) {
+  var hashCode = 0;
+  for (final el in list) hashCode = hashCode ^ el.hashCode;
+  return hashCode;
+}
+
 /// Lazy evaluates function and returns cached result on each call.
 Func0<R> memo0<R>(Func0<R> func) {
   late R prevResult;
@@ -36,7 +42,7 @@ Func0<R> memo0<R>(Func0<R> func) {
 Func1<A, R> memo1<A, R>(Func1<A, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode,
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA) {
@@ -56,7 +62,7 @@ Func1<A, R> memo1<A, R>(Func1<A, R> func) {
 Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB) {
@@ -76,7 +82,7 @@ Func2<A, B, R> memo2<A, B, R>(Func2<A, B, R> func) {
 Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC) {
@@ -96,7 +102,7 @@ Func3<A, B, C, R> memo3<A, B, C, R>(Func3<A, B, C, R> func) {
 Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD) {
@@ -116,7 +122,7 @@ Func4<A, B, C, D, R> memo4<A, B, C, D, R>(Func4<A, B, C, D, R> func) {
 Func5<A, B, C, D, E, R> memo5<A, B, C, D, E, R>(Func5<A, B, C, D, E, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE) {
@@ -137,7 +143,7 @@ Func6<A, B, C, D, E, F, R> memo6<A, B, C, D, E, F, R>(
     Func6<A, B, C, D, E, F, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF) {
@@ -158,7 +164,7 @@ Func7<A, B, C, D, E, F, G, R> memo7<A, B, C, D, E, F, G, R>(
     Func7<A, B, C, D, E, F, G, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG) {
@@ -179,7 +185,7 @@ Func8<A, B, C, D, E, F, G, H, R> memo8<A, B, C, D, E, F, G, H, R>(
     Func8<A, B, C, D, E, F, G, H, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH) {
@@ -200,7 +206,7 @@ Func9<A, B, C, D, E, F, G, H, I, R> memo9<A, B, C, D, E, F, G, H, I, R>(
     Func9<A, B, C, D, E, F, G, H, I, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode ^ l[8].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI) {
@@ -221,7 +227,7 @@ Func10<A, B, C, D, E, F, G, H, I, J, R> memo10<A, B, C, D, E, F, G, H, I, J, R>(
     Func10<A, B, C, D, E, F, G, H, I, J, R> func) {
   final argsToOutput = HashMap<List, R>(
     equals: (a, b) => _listEquals(a, b),
-    hashCode: (l) => l[0].hashCode ^ l[1].hashCode ^ l[2].hashCode ^ l[3].hashCode ^ l[4].hashCode ^ l[5].hashCode ^ l[6].hashCode ^ l[7].hashCode ^ l[8].hashCode ^ l[9].hashCode
+    hashCode: (l) => _listHashCode(l),
   );
 
   return ((A argA, B argB, C argC, D argD, E argE, F argF, G argG, H argH, I argI, J argJ) {
