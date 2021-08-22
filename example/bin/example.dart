@@ -11,22 +11,30 @@ num heavyCalc(num number) {
 }
 
 void main(List<String> arguments) {
-  print('Some heavy calculations done 99 times with 6 different inputs:');
+  const loops = 99;
+  print('Some heavy calculations done $loops times with 6 different inputs:');
   List<double> numbers = [10000, 4206969, 777, 21372137, 99999999, 10000];
+  var sumNormal = 0.0;
   var w = Stopwatch()..start();
-  for (int x = 0; x < 99; x++) {
+  for (int x = 0; x < loops; x++) {
     for (var n in numbers) {
-      heavyCalc(n);
+      sumNormal += heavyCalc(n);
     }
   }
   print('\tNo cache: ${w.elapsedMilliseconds}ms');
 
+  var sumCache = 0.0;
   w.reset();
   var cacheSqrt = memo1(heavyCalc);
-  for (int x = 0; x < 99; x++) {
+  for (int x = 0; x < loops; x++) {
     for (var n in numbers) {
-      cacheSqrt(n);
+      sumCache += cacheSqrt(n);
     }
   }
   print('\tWith cache: ${w.elapsedMilliseconds}ms');
+  if (sumNormal == sumCache) {
+    print("...and results match!");
+  } else {
+    print("...but results don't match... guess we broke something :D");
+  }
 }
